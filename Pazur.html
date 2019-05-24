@@ -210,11 +210,11 @@ It’s possible to override these rules and use any name, i.e., any sequence of 
 
 ```r
 function1 &lt;- function(v){
-  retval &lt;- 0
+  sum_of_squares &lt;- 0
   for (i in 1:length(v)){
-    retval = retval + v[i]*v[i]
+    sum_of_squares = sum_of_squares + v[i]*v[i]
   }
-  return(sqrt(retval))
+  return(sqrt(sum_of_squares))
 }
 ```
 
@@ -344,13 +344,16 @@ return(output_matrix)
 
 
 ```r
-create_tridiagonal&lt;-function(n=5,d1=1,d2=2){output_matrix&lt;-matrix(ncol=n,nrow=n,0)
-for(row in 1:(n-1)){output_matrix[row,row-1] &lt;-d2
-output_matrix[row,row+1] &lt;-d2}
-output_matrix[row-1, row] &lt;-d2
-output_matrix[row+1, row] &lt;-d2
-diag(output_matrix)&lt;-d1
-return(output_matrix)
+create_tridiagonal &lt;- function(n = 5, d1 = 1, d2 = 2) {
+  output_matrix &lt;- matrix(ncol = n, nrow = n, 0)
+  for (row in 1:(n - 1)) {
+    output_matrix[row, row - 1] &lt;- d2
+    output_matrix[row, row + 1] &lt;- d2
+  }
+  output_matrix[row - 1, row] &lt;- d2
+  output_matrix[row + 1, row] &lt;- d2
+  diag(output_matrix) &lt;- d1
+  return(output_matrix)
 }
 ```
 
